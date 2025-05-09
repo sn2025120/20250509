@@ -129,3 +129,43 @@ if user_api_key:
 
 
 
+
+
+
+
+
+mbti_type, mbti_song = "", ""
+
+criterion = st.radio("추천 기준을 선택하세요", ["MBTI 기반", "기타"])  # 기준 선택 (예시)
+
+if criterion == "MBTI 기반":
+    mbti_type = st.selectbox("🧬 MBTI를 선택하세요", [
+        "INTJ", "INTP", "ENTJ", "ENTP",
+        "INFJ", "INFP", "ENFJ", "ENFP",
+        "ISTJ", "ISFJ", "ESTJ", "ESFJ",
+        "ISTP", "ISFP", "ESTP", "ESFP"
+    ])
+
+    # MBTI별 추천 노래 딕셔너리 예시
+    mbti_songs = {
+        "INTJ": "Imagine Dragons - Demons",
+        "INTP": "Radiohead - No Surprises",
+        "ENTJ": "Queen - Don't Stop Me Now",
+        "ENTP": "David Bowie - Changes",
+        "INFJ": "Lana Del Rey - Young and Beautiful",
+        "INFP": "Billie Eilish - everything i wanted",
+        "ENFJ": "Coldplay - Viva La Vida",
+        "ENFP": "Owl City - Fireflies",
+        "ISTJ": "The Beatles - Let It Be",
+        "ISFJ": "Adele - Someone Like You",
+        "ESTJ": "Survivor - Eye of the Tiger",
+        "ESFJ": "Taylor Swift - Shake It Off",
+        "ISTP": "Linkin Park - Numb",
+        "ISFP": "Ed Sheeran - Photograph",
+        "ESTP": "Bruno Mars - Uptown Funk",
+        "ESFP": "Dua Lipa - Levitating"
+    }
+
+    if mbti_type:
+        mbti_song = mbti_songs.get(mbti_type)
+        st.success(f"🎧 {mbti_type} 타입에게 어울리는 노래는:\n**{mbti_song}** 입니다!")
